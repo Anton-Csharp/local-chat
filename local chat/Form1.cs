@@ -20,11 +20,13 @@ namespace local_chat
         const int HelloInterval = 5000;
         const string MessagePrefix = "MSG:";
         const string HelooPrefix = "HELLO:";
+        const string privatePrefix = "PRIVATE:";
         private UdpClient udpClient;
         private IPEndPoint groupEP;
         private Thread receiveThread;
         private bool isRunning;
         private readonly string userName = Environment.MachineName;
+        private readonly Dictionary <string,IPAddress > users = new Dictionary<string, IPAddress> ();
         
         public Form1()
         {
@@ -88,17 +90,34 @@ namespace local_chat
             if (message.StartsWith(HelooPrefix))
             {
                 string name = message.Substring(HelooPrefix.Length);
-                if (!listUsers.Items.Contains(name)
-                   && name != userName)
+                if (name != userName )
                 {
-                    listUsers.Items.Add(name);
-                    txtchat.AppendText($"[{name} присоединился]\r\n");
+                    users[name] = senderIp;
+                    Updateuserlist();
+                    if (!listUsers.Items.Contains(name))
+                    {
+                        txtchat.AppendText($"[{name} присоединился]\r\n");
+                    }
                 }
             }
-            else if (message.StartsWith(MessagePrefix));
+            else if (message.StartsWith(MessagePrefix))
             {
                 string text = message.Substring (MessagePrefix.Length);
                 txtchat.AppendText($"{text}\r\n");
+            }
+            else if (message.StartsWith(privatePrefix))
+            {
+                string content = message.Substring(privatePrefix.Length);
+                int separatorindex = content.IndexOf(':');
+                if (separatorindex >0)
+                {
+                    string senderName = content.Substring(0, separatorindex);
+                    string privatemessage = content.Substring(separatorindex + 1);
+                    if (senderName == userName || users.ContainsKey(senderName))
+                    {
+                        txtchat.AppendText($"[ЛИЧНО от {senderName}]:{privatemessage}\r\n");
+                    }
+                }
             }
 
         }
@@ -136,6 +155,52 @@ namespace local_chat
             {
                 SendMessage($"{MessagePrefix}{userName}:{text}");
                 txtmsg.Clear();
+            }
+        }
+
+        private void btnSendPrivateMsg_Click(object sender, EventArgs e)
+        {
+            if (listUsers.SelectedItem == null)
+            {
+                MessageBox.Show("выберите пользавателя из списка");
+                return;
+            }
+            string recipient = listUsers.SelectedItem.ToString();
+            string privatetext = txtmsg.Text.Trim();
+            if (!string.IsNullOrEmpty(privatetext))
+            {
+                SendPrivateMessage(recipient, privatetext);
+            }
+        }
+        private void Updateuserlist()
+        {
+            listUsers.Items.Clear();
+            foreach (var user in users.Keys )
+            {
+                listUsers.Items.Add(user);
+            }
+        }
+
+        private void SendPrivateMessage(string recipient,string message)
+        {
+            if (users.TryGetValue(recipient, out IPAddress recipientIp))
+            {
+                try
+                {
+                    string fullmessage = $"{privatePrefix}{recipient}:{message}";
+                    byte[] data = Encoding.UTF8.GetBytes(fullmessage);
+                    IPEndPoint privateEP = new IPEndPoint(recipientIp, Port);
+                    udpClient.Send(data, data.Length, privateEP);
+                    txtchat.AppendText($"[Я->{recipient}]:{message}\r\n");
+                }
+                catch(Exception ex)
+                {
+                    txtchat.AppendText($"Ошибка отправки сообщения:{ex.Message}\r\n");
+                }
+            }
+            else
+            {
+                MessageBox.Show("пользователь не найден");
             }
         }
     }
