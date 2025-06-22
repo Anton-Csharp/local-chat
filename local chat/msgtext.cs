@@ -16,5 +16,38 @@ namespace local_chat
         {
             InitializeComponent();
         }
+
+
+        public Image image
+        {
+            get
+            {
+                return pictureBox1.Image;
+            }
+            set { pictureBox1.Image = value; }
+
+        }
+        public string username
+        {
+            get
+            {
+                return userNamelb.Text;
+            }
+            set
+            {
+                userNamelb.Text = value;
+            }
+        }
+        public string usertext
+        {
+            get
+            {
+                return userText.Text;
+            }
+            set 
+            {
+               userText.Text= value;
+            }
+        }
     }
 }

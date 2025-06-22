@@ -28,141 +28,161 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtmsg = new System.Windows.Forms.TextBox();
-            this.listUsers = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSend = new System.Windows.Forms.Button();
-            this.txtchat = new System.Windows.Forms.TextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnSendPrivateMsg = new System.Windows.Forms.Button();
+            this.listUsers = new System.Windows.Forms.ListBox();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.txtmsg = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtmsg
-            // 
-            this.txtmsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtmsg.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtmsg.Location = new System.Drawing.Point(403, 450);
-            this.txtmsg.Multiline = true;
-            this.txtmsg.Name = "txtmsg";
-            this.txtmsg.Size = new System.Drawing.Size(188, 54);
-            this.txtmsg.TabIndex = 0;
-            // 
-            // listUsers
-            // 
-            this.listUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.listUsers.FormattingEnabled = true;
-            this.listUsers.Location = new System.Drawing.Point(125, 38);
-            this.listUsers.Name = "listUsers";
-            this.listUsers.Size = new System.Drawing.Size(246, 472);
-            this.listUsers.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(119, -1);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(110, -14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 36);
-            this.label2.TabIndex = 8;
+            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.TabIndex = 14;
             this.label2.Text = "telegram";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(-1, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(707, 554);
+            this.tabControl1.TabIndex = 15;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.pictureBox1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(699, 528);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "профиль";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.flowLayoutPanel1);
+            this.tabPage2.Controls.Add(this.btnSendPrivateMsg);
+            this.tabPage2.Controls.Add(this.listUsers);
+            this.tabPage2.Controls.Add(this.btnSend);
+            this.tabPage2.Controls.Add(this.txtmsg);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(699, 528);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "чат";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnSendPrivateMsg
+            // 
+            this.btnSendPrivateMsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSendPrivateMsg.Location = new System.Drawing.Point(264, 480);
+            this.btnSendPrivateMsg.Name = "btnSendPrivateMsg";
+            this.btnSendPrivateMsg.Size = new System.Drawing.Size(60, 41);
+            this.btnSendPrivateMsg.TabIndex = 21;
+            this.btnSendPrivateMsg.Text = "send private";
+            this.btnSendPrivateMsg.UseVisualStyleBackColor = true;
+            // 
+            // listUsers
+            // 
+            this.listUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.listUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listUsers.FormattingEnabled = true;
+            this.listUsers.Location = new System.Drawing.Point(4, 6);
+            this.listUsers.Name = "listUsers";
+            this.listUsers.Size = new System.Drawing.Size(320, 472);
+            this.listUsers.TabIndex = 19;
             // 
             // btnSend
             // 
             this.btnSend.BackgroundImage = global::local_chat.Properties.Resources.OIP;
             this.btnSend.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSend.Location = new System.Drawing.Point(597, 450);
+            this.btnSend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnSend.Location = new System.Drawing.Point(198, 481);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(60, 54);
-            this.btnSend.TabIndex = 1;
+            this.btnSend.Size = new System.Drawing.Size(60, 41);
+            this.btnSend.TabIndex = 18;
             this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
-            // txtchat
+            // txtmsg
             // 
-            this.txtchat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtchat.Location = new System.Drawing.Point(403, 38);
-            this.txtchat.Multiline = true;
-            this.txtchat.Name = "txtchat";
-            this.txtchat.Size = new System.Drawing.Size(320, 406);
-            this.txtchat.TabIndex = 9;
+            this.txtmsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtmsg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtmsg.Location = new System.Drawing.Point(3, 480);
+            this.txtmsg.Multiline = true;
+            this.txtmsg.Name = "txtmsg";
+            this.txtmsg.Size = new System.Drawing.Size(188, 41);
+            this.txtmsg.TabIndex = 17;
             // 
-            // btnSendPrivateMsg
+            // flowLayoutPanel1
             // 
-            this.btnSendPrivateMsg.Location = new System.Drawing.Point(663, 450);
-            this.btnSendPrivateMsg.Name = "btnSendPrivateMsg";
-            this.btnSendPrivateMsg.Size = new System.Drawing.Size(60, 54);
-            this.btnSendPrivateMsg.TabIndex = 10;
-            this.btnSendPrivateMsg.Text = "send private";
-            this.btnSendPrivateMsg.UseVisualStyleBackColor = true;
-            this.btnSendPrivateMsg.Click += new System.EventHandler(this.btnSendPrivateMsg_Click);
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(330, 6);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(361, 519);
+            this.flowLayoutPanel1.TabIndex = 22;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 55);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.Size = new System.Drawing.Size(218, 329);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "фото профиля";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(15, 124);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 13;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 108);
+            this.label3.Location = new System.Drawing.Point(89, 339);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "никнейм";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "label3";
             // 
-            // button1
+            // textBox1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 150);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "подтвердить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.textBox1.Location = new System.Drawing.Point(290, 40);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(735, 516);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btnSendPrivateMsg);
-            this.Controls.Add(this.txtchat);
+            this.ClientSize = new System.Drawing.Size(706, 555);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listUsers);
-            this.Controls.Add(this.btnSend);
-            this.Controls.Add(this.txtmsg);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -170,18 +190,18 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtmsg;
-        private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.ListBox listUsers;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtchat;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnSendPrivateMsg;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listUsers;
+        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.TextBox txtmsg;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

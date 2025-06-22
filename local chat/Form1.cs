@@ -82,7 +82,7 @@ namespace local_chat
             }
             catch(Exception ex)
             {
-                txtchat.AppendText($"Ошибка отправки:{ex.Message}\r\n");
+                //txtchat.AppendText($"Ошибка отправки:{ex.Message}\r\n");
             }
         }
         private void ProcessReceivedMessage(string message,IPAddress senderIp)
@@ -96,14 +96,14 @@ namespace local_chat
                     Updateuserlist();
                     if (!listUsers.Items.Contains(name))
                     {
-                        txtchat.AppendText($"[{name} присоединился]\r\n");
+                        //txtchat.AppendText($"[{name} присоединился]\r\n");
                     }
                 }
             }
             else if (message.StartsWith(MessagePrefix))
             {
                 string text = message.Substring (MessagePrefix.Length);
-                txtchat.AppendText($"{text}\r\n");
+               // txtchat.AppendText($"{text}\r\n");
             }
             else if (message.StartsWith(privatePrefix))
             {
@@ -115,7 +115,7 @@ namespace local_chat
                     string privatemessage = content.Substring(separatorindex + 1);
                     if (senderName == userName || users.ContainsKey(senderName))
                     {
-                        txtchat.AppendText($"[ЛИЧНО от {senderName}]:{privatemessage}\r\n");
+                        //txtchat.AppendText($"[ЛИЧНО от {senderName}]:{privatemessage}\r\n");
                     }
                 }
             }
@@ -191,11 +191,11 @@ namespace local_chat
                     byte[] data = Encoding.UTF8.GetBytes(fullmessage);
                     IPEndPoint privateEP = new IPEndPoint(recipientIp, Port);
                     udpClient.Send(data, data.Length, privateEP);
-                    txtchat.AppendText($"[Я->{recipient}]:{message}\r\n");
+                    //txtchat.AppendText($"[Я->{recipient}]:{message}\r\n");
                 }
                 catch(Exception ex)
                 {
-                    txtchat.AppendText($"Ошибка отправки сообщения:{ex.Message}\r\n");
+                    //txtchat.AppendText($"Ошибка отправки сообщения:{ex.Message}\r\n");
                 }
             }
             else
@@ -203,5 +203,7 @@ namespace local_chat
                 MessageBox.Show("пользователь не найден");
             }
         }
+
+       
     }
 }
