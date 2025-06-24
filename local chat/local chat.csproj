@@ -101,5 +101,8 @@
   <ItemGroup>
     <None Include="Resources\загрузка %282%29.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-free-vector.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,29 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.userNamelb = new System.Windows.Forms.Label();
+            this.NickNameUser = new System.Windows.Forms.Label();
             this.userText = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // NickNameUser
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(65, 59);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // userNamelb
-            // 
-            this.userNamelb.AutoSize = true;
-            this.userNamelb.Location = new System.Drawing.Point(74, 13);
-            this.userNamelb.Name = "userNamelb";
-            this.userNamelb.Size = new System.Drawing.Size(27, 13);
-            this.userNamelb.TabIndex = 1;
-            this.userNamelb.Text = "имя";
+            this.NickNameUser.AutoSize = true;
+            this.NickNameUser.Location = new System.Drawing.Point(74, 13);
+            this.NickNameUser.Name = "NickNameUser";
+            this.NickNameUser.Size = new System.Drawing.Size(27, 13);
+            this.NickNameUser.TabIndex = 1;
+            this.NickNameUser.Text = "имя";
             // 
             // userText
             // 
@@ -61,12 +52,25 @@
             this.userText.TabIndex = 2;
             this.userText.Text = "интересный текст";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.pictureBox1.Image = global::local_chat.Properties.Resources.illustration_of_human_icon_user_symbol_icon_modern_design_on_blank_background_free_vector;
+            this.pictureBox1.InitialImage = global::local_chat.Properties.Resources.illustration_of_human_icon_user_symbol_icon_modern_design_on_blank_background_free_vector;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(65, 59);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // msgtext
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.Controls.Add(this.userText);
-            this.Controls.Add(this.userNamelb);
+            this.Controls.Add(this.NickNameUser);
             this.Controls.Add(this.pictureBox1);
             this.Name = "msgtext";
             this.Size = new System.Drawing.Size(360, 65);
@@ -79,7 +83,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label userNamelb;
+        private System.Windows.Forms.Label NickNameUser;
         private System.Windows.Forms.Label userText;
     }
 }

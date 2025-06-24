@@ -63,6 +63,17 @@ namespace local_chat.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap illustration_of_human_icon_user_symbol_icon_modern_design_on_blank_background_free_vector {
+            get {
+                object obj = ResourceManager.GetObject("illustration-of-human-icon-user-symbol-icon-modern-design-on-blank-background-fre" +
+                        "e-vector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap OIP {
             get {
                 object obj = ResourceManager.GetObject("OIP", resourceCulture);

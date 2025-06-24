@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace local_chat
 {
@@ -83,6 +84,7 @@ namespace local_chat
             catch(Exception ex)
             {
                 //txtchat.AppendText($"Ошибка отправки:{ex.Message}\r\n");
+                AddUserDataInChat("система", ex.Message);
             }
         }
         private void ProcessReceivedMessage(string message,IPAddress senderIp)
@@ -97,13 +99,23 @@ namespace local_chat
                     if (!listUsers.Items.Contains(name))
                     {
                         //txtchat.AppendText($"[{name} присоединился]\r\n");
+                        AddUserDataInChat(name, "новый пользователь!");
                     }
                 }
             }
             else if (message.StartsWith(MessagePrefix))
             {
                 string text = message.Substring (MessagePrefix.Length);
-               // txtchat.AppendText($"{text}\r\n");
+                string[] data = text.Split(':');
+                // txtchat.AppendText($"{text}\r\n");
+                if (data[0]==userName )
+                {
+                     AddUserDataInChat(data[0], data[1],pictureBox1.Image);
+                    return;
+                }
+                AddUserDataInChat(data[0], data[1]);
+
+
             }
             else if (message.StartsWith(privatePrefix))
             {
@@ -116,6 +128,7 @@ namespace local_chat
                     if (senderName == userName || users.ContainsKey(senderName))
                     {
                         //txtchat.AppendText($"[ЛИЧНО от {senderName}]:{privatemessage}\r\n");
+                        AddUserDataInChat(senderName, privatemessage);   
                     }
                 }
             }
@@ -138,7 +151,10 @@ namespace local_chat
 
                     }
                 }
-                catch (SocketException) { }
+                catch (SocketException)
+                { 
+
+                }
 
 
 
@@ -146,8 +162,9 @@ namespace local_chat
             })
             { IsBackground = true };
             receiveThread.Start();
+           
         }
-
+          
         private void btnSend_Click(object sender, EventArgs e)
         {
             string text = txtmsg.Text.Trim();
@@ -192,10 +209,12 @@ namespace local_chat
                     IPEndPoint privateEP = new IPEndPoint(recipientIp, Port);
                     udpClient.Send(data, data.Length, privateEP);
                     //txtchat.AppendText($"[Я->{recipient}]:{message}\r\n");
+                    AddUserDataInChat(recipient, message);
                 }
                 catch(Exception ex)
                 {
                     //txtchat.AppendText($"Ошибка отправки сообщения:{ex.Message}\r\n");
+                    AddUserDataInChat("система",ex.Message);
                 }
             }
             else
@@ -204,6 +223,42 @@ namespace local_chat
             }
         }
 
-       
+        private void label3_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog()== DialogResult.OK )
+            {
+                pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
+            }
+        }
+        private void AddUserDataInChat (string name,string message,Image avatar = null)
+        {
+            msgtext msgtext = new msgtext
+            {
+                username = name,
+                image = avatar,
+                usertext = message
+            };
+            flowchat.Controls.Add(msgtext);
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "Укажите ник")
+            {
+                textBox1.ForeColor = Color.Black;
+                textBox1.Text = "";
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.ForeColor = Color.Silver;
+                textBox1.Text = "Укажите ник";
+            }
+        }
+
+      
     }
 }

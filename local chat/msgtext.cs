@@ -24,18 +24,18 @@ namespace local_chat
             {
                 return pictureBox1.Image;
             }
-            set { pictureBox1.Image = value; }
+            set { pictureBox1.Image = value == null ? pictureBox1.Image : value; }
 
         }
         public string username
         {
             get
             {
-                return userNamelb.Text;
+                return NickNameUser.Text;
             }
             set
             {
-                userNamelb.Text = value;
+                NickNameUser.Text = value;
             }
         }
         public string usertext
