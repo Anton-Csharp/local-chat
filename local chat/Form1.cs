@@ -29,6 +29,7 @@ namespace local_chat
         private readonly string userName = Environment.MachineName;
         private readonly Dictionary <string,IPAddress > users = new Dictionary<string, IPAddress> ();
         
+        
         public Form1()
         {
             InitializeComponent();
@@ -107,10 +108,10 @@ namespace local_chat
             {
                 string text = message.Substring (MessagePrefix.Length);
                 string[] data = text.Split(':');
-                // txtchat.AppendText($"{text}\r\n");
+               
                 if (data[0]==userName )
                 {
-                     AddUserDataInChat(data[0], data[1],pictureBox1.Image);
+                     
                     return;
                 }
                 AddUserDataInChat(data[0], data[1]);
@@ -171,6 +172,7 @@ namespace local_chat
             if (!string.IsNullOrEmpty(text))
             {
                 SendMessage($"{MessagePrefix}{userName}:{text}");
+                AddUserDataInChat(userName, text, pictureBox1.Image);
                 txtmsg.Clear();
             }
         }
@@ -259,6 +261,14 @@ namespace local_chat
             }
         }
 
-      
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text != ""&&textBox1.Text != "Укажите ник")
+            {
+
+            }
+        }
+
+       
     }
 }

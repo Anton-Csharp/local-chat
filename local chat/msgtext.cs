@@ -15,9 +15,10 @@ namespace local_chat
         public msgtext()
         {
             InitializeComponent();
+            countChar = userText.Text .Length;
         }
 
-
+        private int countChar;
         public Image image
         {
             get
@@ -46,6 +47,17 @@ namespace local_chat
             }
             set 
             {
+                int count = value.Length / countChar;
+                if (count >0)
+                {
+                    int oldSizeH = userText.Height;
+                    userText.Size = new Size(userText.Width, userText.Height * count);
+                    this.Height = this.Height +userText.Height - oldSizeH ;
+                }
+
+
+
+
                userText.Text= value;
             }
         }

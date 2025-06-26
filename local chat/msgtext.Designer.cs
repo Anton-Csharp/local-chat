@@ -48,9 +48,9 @@
             this.userText.AutoSize = true;
             this.userText.Location = new System.Drawing.Point(74, 40);
             this.userText.Name = "userText";
-            this.userText.Size = new System.Drawing.Size(99, 13);
+            this.userText.Size = new System.Drawing.Size(271, 13);
             this.userText.TabIndex = 2;
-            this.userText.Text = "интересный текст";
+            this.userText.Text = "шшшшшшшшшшшшшшшшшшшшшшшшшшшшшшшшш";
             // 
             // pictureBox1
             // 
