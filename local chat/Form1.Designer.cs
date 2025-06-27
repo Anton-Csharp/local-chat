@@ -186,6 +186,7 @@
             this.btnSendPrivateMsg.TabIndex = 21;
             this.btnSendPrivateMsg.Text = "send private";
             this.btnSendPrivateMsg.UseVisualStyleBackColor = true;
+            this.btnSendPrivateMsg.Click += new System.EventHandler(this.btnSendPrivateMsg_Click);
             // 
             // listUsers
             // 

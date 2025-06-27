@@ -108,29 +108,35 @@ namespace local_chat
             else if (message.StartsWith(MessagePrefix))
             {
                 string content = message.Substring(MessagePrefix.Length);
+
                 int nameEndIndex = content.IndexOf(':');
                 if (nameEndIndex < 0) return;
+
                 string name = content.Substring(0,nameEndIndex);
                 if (name == userName) return;
+
                 string rest = content.Substring(nameEndIndex+1);
-                int avatarEndIndex = rest.IndexOf(":");
+
+                int avatarEndIndex = rest.IndexOf(':');
                 if (avatarEndIndex < 0) return;
+
                 string avatarBase64 = rest.Substring(0, avatarEndIndex);
                 string msg= rest.Substring(avatarEndIndex+1);
+
                 Image avatar = null;
                 if (!string.IsNullOrEmpty(msg))
                 {
                     try
                     {
                         byte[] imageBytes = Convert.FromBase64String(avatarBase64);
-                        using(MemoryStream ms = new MemoryStream())
+                        using(MemoryStream ms = new MemoryStream(imageBytes))
                         {
                             avatar = Image.FromStream(ms);
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        throw;
+                        MessageBox.Show(ex.Message);
                     }
                     AddUserDataInChat(name,msg,avatar );
                 }
@@ -193,10 +199,10 @@ namespace local_chat
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
-                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
                         avatarbase64 = Convert.ToBase64String(ms.ToArray());
                     }
-                    SendMessage($"{MessagePrefix}{userName}:{text}");
+                    SendMessage($"{MessagePrefix}{userName}:{avatarbase64}:{text}");
                     AddUserDataInChat(userName, text, pictureBox1.Image);
                     txtmsg.Clear();
                 }

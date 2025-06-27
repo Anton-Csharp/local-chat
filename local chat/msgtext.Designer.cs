@@ -45,7 +45,6 @@
             // 
             // userText
             // 
-            this.userText.AutoSize = true;
             this.userText.Location = new System.Drawing.Point(74, 40);
             this.userText.Name = "userText";
             this.userText.Size = new System.Drawing.Size(271, 13);
