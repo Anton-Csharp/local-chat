@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -106,17 +107,33 @@ namespace local_chat
             }
             else if (message.StartsWith(MessagePrefix))
             {
-                string text = message.Substring (MessagePrefix.Length);
-                string[] data = text.Split(':');
-               
-                if (data[0]==userName )
+                string content = message.Substring(MessagePrefix.Length);
+                int nameEndIndex = content.IndexOf(':');
+                if (nameEndIndex < 0) return;
+                string name = content.Substring(0,nameEndIndex);
+                if (name == userName) return;
+                string rest = content.Substring(nameEndIndex+1);
+                int avatarEndIndex = rest.IndexOf(":");
+                if (avatarEndIndex < 0) return;
+                string avatarBase64 = rest.Substring(0, avatarEndIndex);
+                string msg= rest.Substring(avatarEndIndex+1);
+                Image avatar = null;
+                if (!string.IsNullOrEmpty(msg))
                 {
-                     
-                    return;
+                    try
+                    {
+                        byte[] imageBytes = Convert.FromBase64String(avatarBase64);
+                        using(MemoryStream ms = new MemoryStream())
+                        {
+                            avatar = Image.FromStream(ms);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                    AddUserDataInChat(name,msg,avatar );
                 }
-                AddUserDataInChat(data[0], data[1]);
-
-
             }
             else if (message.StartsWith(privatePrefix))
             {
@@ -171,9 +188,19 @@ namespace local_chat
             string text = txtmsg.Text.Trim();
             if (!string.IsNullOrEmpty(text))
             {
-                SendMessage($"{MessagePrefix}{userName}:{text}");
-                AddUserDataInChat(userName, text, pictureBox1.Image);
-                txtmsg.Clear();
+                string avatarbase64 = "";
+                if (pictureBox1.Image != null)
+                {
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        pictureBox1.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        avatarbase64 = Convert.ToBase64String(ms.ToArray());
+                    }
+                    SendMessage($"{MessagePrefix}{userName}:{text}");
+                    AddUserDataInChat(userName, text, pictureBox1.Image);
+                    txtmsg.Clear();
+                }
+                
             }
         }
 
