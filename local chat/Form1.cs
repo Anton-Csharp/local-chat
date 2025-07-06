@@ -27,7 +27,7 @@ namespace local_chat
         private IPEndPoint groupEP;
         private Thread receiveThread;
         private bool isRunning;
-        private readonly string userName = Environment.MachineName;
+        private string userName = Environment.MachineName;
         private readonly Dictionary <string,IPAddress > users = new Dictionary<string, IPAddress> ();
         
         
@@ -298,7 +298,11 @@ namespace local_chat
         {
             if (textBox1.Text != ""&&textBox1.Text != "Укажите ник")
             {
-
+                userName = textBox1.Text;
+            }
+            else
+            {
+                userName = Environment.MachineName;
             }
         }
 
